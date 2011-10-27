@@ -33,6 +33,11 @@ body{
   z-index: 10000;
 }
 
+#q {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
 #text {
   margin-top: 300px;
   font-size: 72px;

@@ -33,12 +33,12 @@ var intervalTimer = 0;
 app.use(express.bodyParser());
 
 app.use(express.static(__dirname + '/public'));
- 
+
 app.get('/', function(req,res){
   res.redirect('/index.htm');
 });
 
-app.listen(process.env.PORT || 8082);
+app.listen(process.env.PORT || 8083);
 
 var everyone = nowjs.initialize(app);
 
@@ -55,10 +55,10 @@ everyone.now.next = function(i) {
   var current = listQ[currentQ];
   everyone.now.broadcast(current.question, current.time);
   winners = [];
-  timer = setTimeout(function () { everyone.now.disable(); clearInterval(intervalTimer); }, current.time * 1000);
+  timer = setTimeout(function () { everyone.now.disable(); everyone.now.nextQ("None", -1); clearInterval(intervalTimer); }, current.time * 1000);
   timeLeft = current.time;
   intervalTimer = setInterval(function () { timeLeft -= 1; }, 1000);
-  this.now.nextQ(current.question, currentQ);
+  everyone.now.nextQ(current.question, currentQ);
 }
 
 everyone.now.guess = function(g) {
@@ -99,6 +99,7 @@ someoneWon = function(self) {
     clearInterval(intervalTimer);
     clearTimeout(timer);
     everyone.now.disable();
+    everyone.now.nextQ("None", -1);
   }
 }
 
