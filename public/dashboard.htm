@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="jquery.tablesorter.min.js"></script>
+        <script src="/nowjs/now.js"></script>
+    <script>
+      now.updateTable = function(nameAndScores){
+        
+        
+        $("#leaderboard").remove();
+        $("#container").append('<table id="leaderboard"><thead><th>Name</th><th>Score</th></thead><tbody id="table-content"></tbody></table>');
+        var tableContent = $("#table-content");
+        for (var name in nameAndScores){
+          var row = $("<tr><td>"+name+"</td><td>"+nameAndScores[name]+"</td></tr>");
+          tableContent.append(row);       
+        }
+        $("#leaderboard").tablesorter({
+          sortList: [[1,1]] 
+        });
+        
+      }
+    </script>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  
+  <body>
+    <div id="container">
+      <h1>Leaderboard</h1>
+    </div>
+  </body>
+</html>

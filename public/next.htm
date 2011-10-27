@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="jquery.tablesorter.min.js"></script>
+       <script src="/nowjs/now.js"></script>
+       
+  <script>
+    $(document).ready(function(){
+      $('#next-button').click(function(){now.next();});
+    });
+    
+    now.nextQ = function(q, i) {
+      $("#q").text(q + ", #" + i);
+    }
+    
+    
+  </script>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  
+  <body>
+    <div id="container">
+      <button id="next-button">Next question</button>
+      <h1 id="q"></h1>
+    </div>
+  
+  </body>
+</html>
