@@ -61,15 +61,12 @@ function begin(){
     refreshTime();
     timer = setInterval(function(){timeLeft--; refreshTime();}, 1000);
   }
-
-  $(document).ready(function(){
-    $("#answer").keypress(function(e){
-      if(e.which === 13) {
-        now.guess($(this).val());
-        $(this).val('');
-      }
-    });
-    now.name = 'asdf'+ (new Date() - 0);
+  
+  $("#answer").keypress(function(e){
+    if(e.which === 13) {
+      now.guess($(this).val());
+      $(this).val('');
+    }
   });
   
   modal('Round is starting soon');
